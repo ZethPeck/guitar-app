@@ -1,0 +1,47 @@
+{
+  "expo": {
+    "name": "FretLogic",
+    "slug": "fretlogic",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "scheme": "fretlogic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1a1a2e"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "FretLogic needs microphone access to detect pitch from your guitar for tuning and chord identification."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1a1a2e"
+      },
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "RECORD_AUDIO"
+      ],
+      "package": "com.fretlogic.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-av",
+        {
+          "microphonePermission": "FretLogic needs microphone access to detect pitch from your guitar for tuning and chord identification."
+        }
+      ]
+    ]
+  }
+}
