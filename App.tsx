@@ -1,55 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-
-// Simple screens
-function TunerScreen() {
-  return (
-    <View style={styles.screen}>
-      <Text style={styles.title}>Tuner</Text>
-      <Text style={styles.subtitle}>Tap Start to begin tuning</Text>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Start Tuner</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
-function ChordsScreen() {
-  return (
-    <View style={styles.screen}>
-      <Text style={styles.title}>Chord Library</Text>
-      <Text style={styles.subtitle}>Browse chords by root note</Text>
-    </View>
-  );
-}
-
-function ScalesScreen() {
-  return (
-    <View style={styles.screen}>
-      <Text style={styles.title}>Scales & Modes</Text>
-      <Text style={styles.subtitle}>Learn scale patterns</Text>
-    </View>
-  );
-}
-
-function CircleScreen() {
-  return (
-    <View style={styles.screen}>
-      <Text style={styles.title}>Circle of Fifths</Text>
-      <Text style={styles.subtitle}>Interactive music theory</Text>
-    </View>
-  );
-}
-
-function PracticeScreen() {
-  return (
-    <View style={styles.screen}>
-      <Text style={styles.title}>Practice</Text>
-      <Text style={styles.subtitle}>Metronome & chord trainer</Text>
-    </View>
-  );
-}
+import { TunerScreen, ChordsScreen, ScalesScreen, CircleScreen, PracticeScreen } from './src/screens';
 
 type TabName = 'tuner' | 'chords' | 'scales' | 'circle' | 'practice';
 
@@ -81,6 +33,9 @@ export default function App() {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>FretLogic</Text>
+        <Text style={styles.headerSubtitle}>
+          {TABS.find(t => t.key === activeTab)?.label}
+        </Text>
       </View>
 
       {/* Screen Content */}
@@ -115,46 +70,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#1a1a2e',
   },
   header: {
-    padding: 16,
+    padding: 12,
     borderBottomWidth: 1,
     borderBottomColor: '#2d2d4a',
+    alignItems: 'center',
   },
   headerTitle: {
     color: '#00ff88',
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
-    textAlign: 'center',
+  },
+  headerSubtitle: {
+    color: '#aaa',
+    fontSize: 12,
+    marginTop: 2,
   },
   content: {
     flex: 1,
-  },
-  screen: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  title: {
-    color: '#fff',
-    fontSize: 28,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  subtitle: {
-    color: '#aaa',
-    fontSize: 16,
-  },
-  button: {
-    marginTop: 30,
-    backgroundColor: '#00ff88',
-    paddingHorizontal: 32,
-    paddingVertical: 16,
-    borderRadius: 12,
-  },
-  buttonText: {
-    color: '#1a1a2e',
-    fontSize: 18,
-    fontWeight: 'bold',
   },
   tabBar: {
     flexDirection: 'row',
